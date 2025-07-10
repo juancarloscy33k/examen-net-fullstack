@@ -1,0 +1,6 @@
+C:\Users\emman\source\repos\Examen.NET\obj\Debug\net8.0\Examen_NET.csproj.AssemblyReference.cache
+C:\Users\emman\source\repos\Examen.NET\obj\Debug\net8.0\Examen_NET.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\emman\source\repos\Examen.NET\obj\Debug\net8.0\Examen_NET.AssemblyInfoInputs.cache
+C:\Users\emman\source\repos\Examen.NET\obj\Debug\net8.0\Examen_NET.AssemblyInfo.cs
+C:\Users\emman\source\repos\Examen.NET\obj\Debug\net8.0\Examen_NET.csproj.CoreCompileInputs.cache
+C:\Users\emman\source\repos\Examen.NET\obj\Debug\net8.0\Examen_NET.MvcApplicationPartsAssemblyInfo.cache
