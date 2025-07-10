@@ -1,0 +1,54 @@
+<h2>Artículos</h2>
+
+<div *ngIf="isAdmin">
+  <button (click)="nuevoArticulo()">Nuevo Artículo</button>
+</div>
+
+<div *ngIf="articuloSeleccionado" class="formulario-articulo">
+  <h3>{{ esEdicion ? 'Editar Artículo' : 'Nuevo Artículo' }}</h3>
+
+  <form #articuloForm="ngForm" (ngSubmit)="guardarArticulo()">
+    <label>Código:</label>
+    <input [(ngModel)]="articuloSeleccionado.codigo" name="codigo" required />
+
+    <label>Descripción:</label>
+    <input [(ngModel)]="articuloSeleccionado.descripcion" name="descripcion" required />
+
+    <label>Precio:</label>
+    <input type="number" [(ngModel)]="articuloSeleccionado.precio" name="precio" required />
+
+    <label>Imagen (URL):</label>
+    <input [(ngModel)]="articuloSeleccionado.imagen" name="imagen" required />
+
+    <label>Stock:</label>
+    <input type="number" [(ngModel)]="articuloSeleccionado.stock" name="stock" required />
+
+    <button type="submit" [disabled]="articuloForm.invalid">{{ esEdicion ? 'Actualizar' : 'Crear' }}</button>
+    <button type="button" (click)="cancelar()">Cancelar</button>
+  </form>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let articulo of articulos">
+      <td>{{ articulo.codigo }}</td>
+      <td>{{ articulo.descripcion }}</td>
+      <td>{{ articulo.precio | currency }}</td>
+      <td>{{ articulo.stock }}</td>
+      <td>
+        <button *ngIf="isAdmin" (click)="editarArticulo(articulo)">Editar</button>
+        <button *ngIf="isAdmin" (click)="eliminarArticulo(articulo.id)">Eliminar</button>
+        <button *ngIf="!isAdmin" (click)="agregarAlCarrito(articulo)">Agregar al carrito</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

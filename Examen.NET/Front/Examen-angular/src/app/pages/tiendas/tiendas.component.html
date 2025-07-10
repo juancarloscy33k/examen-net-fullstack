@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Tiendas</h2>
+
+  <form #tiendaForm="ngForm" (ngSubmit)="saveTienda()">
+    <input type="text" [(ngModel)]="tiendaModel.sucursal" name="sucursal" placeholder="Sucursal" required />
+    <input type="text" [(ngModel)]="tiendaModel.direccion" name="direccion" placeholder="Dirección" required />
+
+    <button type="submit" [disabled]="tiendaForm.invalid">{{ isEdit ? 'Actualizar' : 'Agregar' }}</button>
+    <button type="button" (click)="resetForm()">Cancelar</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Sucursal</th>
+        <th>Dirección</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tienda of tiendas">
+        <td>{{ tienda.sucursal }}</td>
+        <td>{{ tienda.direccion }}</td>
+        <td>
+          <button (click)="editTienda(tienda)">Editar</button>
+          <button (click)="deleteTienda(tienda.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

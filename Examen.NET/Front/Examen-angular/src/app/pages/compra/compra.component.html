@@ -1,0 +1,39 @@
+<h2>Compras</h2>
+
+<div>
+  <strong>Filtrar por cliente, artículo, código o tienda<br></strong>
+  <input
+    type="text"
+    [(ngModel)]="filtro"
+    class="form-control"
+  /><br>
+</div>
+
+<table *ngIf="comprasFiltradas.length > 0; else noHayCompras" class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Artículo</th>
+      <th>Código</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Fecha</th>
+      <th>Tienda</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let compra of comprasFiltradas">
+      <td>{{ compra.clienteNombre }} {{ compra.clienteApellido }}</td>
+      <td>{{ compra.articuloDescripcion }}</td>
+      <td>{{ compra.articuloCodigo }}</td>
+      <td>{{ compra.articuloPrecio | currency }}</td>
+      <td>{{ compra.cantidad }}</td>
+      <td>{{ compra.fecha | date:'short' }}</td>
+      <td>{{ compra.tiendaSucursal }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noHayCompras>
+  <p>No hay compras para mostrar.</p>
+</ng-template>

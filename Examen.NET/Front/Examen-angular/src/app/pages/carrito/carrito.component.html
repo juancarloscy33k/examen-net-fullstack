@@ -1,0 +1,26 @@
+<h2>Mi Carrito</h2>
+
+<table *ngIf="carrito.length > 0; else vacio">
+  <thead>
+    <tr>
+      <th>Descripción</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of carrito">
+      <td>{{ item.articulo?.descripcion }}</td>
+      <td>{{ item.articulo?.precio | currency }}</td>
+      <td>{{ item.cantidad }}</td>
+      <td>{{ (item.articulo?.precio || 0) * item.cantidad | currency }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #vacio>
+  <p>No hay artículos en el carrito.</p>
+</ng-template>
+
+<button (click)="comprar()">Comprar</button>

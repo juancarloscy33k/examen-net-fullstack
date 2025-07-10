@@ -1,0 +1,38 @@
+<div class="info-evaluador">
+  <strong>Instrucciones </strong>
+  <p>ingresar deberas crear un nuevo usuario</p>
+  <p>Para ingresar como <b>Admin</b> usa: <code>admin&#64;admin.com</code> <strong> podra adceder a los cruds</strong></p>
+  <p>Para ingresar como <b>Usuario</b> usa: <code>usuario&#64;ejemplo.com</code></p>
+</div>
+<div class="container">
+  <h2 *ngIf="!isRegister">Iniciar Sesión</h2>
+  <h2 *ngIf="isRegister">Registro</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Correo</label>
+      <input formControlName="correo" type="email" required>
+    </div>
+    <div>
+      <label>Contraseña</label>
+      <input formControlName="passwor" type="password" required>
+    </div>
+
+    <div *ngIf="isRegister">
+      <label>Nombre</label>
+      <input formControlName="nombre" type="text" required>
+
+      <label>Apellido</label>
+      <input formControlName="apellido" type="text" required>
+
+      <label>Dirección</label>
+      <input formControlName="direccion" type="text" required>
+    </div>
+
+    <button type="submit">{{ isRegister ? 'Registrarse' : 'Iniciar Sesión' }}</button>
+  </form>
+
+  <button (click)="toggleRegister()">
+    {{ isRegister ? 'Ya tengo cuenta' : 'Crear nueva cuenta' }}
+  </button>
+</div>

@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Clientes</h2>
+
+  <form #clienteForm="ngForm" (ngSubmit)="saveCliente()">
+    <input type="text" [(ngModel)]="clienteModel.nombre" name="nombre" placeholder="Nombre" required />
+    <input type="text" [(ngModel)]="clienteModel.apellido" name="apellido" placeholder="Apellido" required />
+    <input type="text" [(ngModel)]="clienteModel.direccion" name="direccion" placeholder="Dirección" required />
+    <input type="email" [(ngModel)]="clienteModel.correo" name="correo" placeholder="Correo" required />
+    <input type="password" [(ngModel)]="clienteModel.passwor" name="passwor" placeholder="Contraseña" required />
+
+    <button type="submit" [disabled]="clienteForm.invalid">{{ isEdit ? 'Actualizar' : 'Agregar' }}</button>
+    <button type="button" (click)="resetForm()">Cancelar</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Dirección</th>
+        <th>Correo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.apellido }}</td>
+        <td>{{ cliente.direccion }}</td>
+        <td>{{ cliente.correo }}</td>
+        <td>
+          <button (click)="editCliente(cliente)">Editar</button>
+          <button (click)="deleteCliente(cliente.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
